@@ -2,8 +2,8 @@
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Version:	1.2.5
-Release:	3
+Version:	1.3.1
+Release:	1
 License:	GPLv2+
 Group:		File tools
 Url:		http://pcmanfm.sourceforge.net/
@@ -17,6 +17,7 @@ BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libfm) >= 1.2.5
 BuildRequires:	pkgconfig(libfm-gtk) >= 1.0.1
+BuildRequires:  pkgconfig(libfm-extra)
 BuildRequires:	pkgconfig(pango) >= 1.20.0
 BuildRequires:	pkgconfig(x11)
 Requires:	shared-mime-info
@@ -34,10 +35,10 @@ features tabbed browsing and user-friendly interface.
 
 %build
 %configure
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 rm -r %{buildroot}%{_includedir}
 

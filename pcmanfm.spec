@@ -17,6 +17,7 @@ BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libfm) >= 1.2.5
 BuildRequires:	pkgconfig(libfm-gtk) >= 1.0.1
+BuildRequires:  pkgconfig(libfm-extra)
 BuildRequires:	pkgconfig(pango) >= 1.20.0
 BuildRequires:	pkgconfig(x11)
 Requires:	shared-mime-info

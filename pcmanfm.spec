@@ -14,9 +14,9 @@ BuildRequires:	intltool
 BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.18.0
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gthread-2.0)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libfm) >= 1.2.5
-BuildRequires:	pkgconfig(libfm-gtk) >= 1.0.1
+BuildRequires:	pkgconfig(libfm-gtk3) >= 1.0.1
 BuildRequires:  pkgconfig(libfm-extra)
 BuildRequires:	pkgconfig(pango) >= 1.20.0
 BuildRequires:	pkgconfig(x11)
@@ -34,7 +34,7 @@ features tabbed browsing and user-friendly interface.
 %autopatch -p1
 
 %build
-%configure
+%configure --with-gtk=3
 %make_build
 
 %install

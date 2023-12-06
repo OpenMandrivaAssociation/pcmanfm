@@ -1,13 +1,22 @@
-%define _disable_ld_no_undefined 1
+#define _disable_ld_no_undefined 1
+
+# git snapshot
+%global snapshot 1
+%if 0%{?snapshot}
+	%global commit		e6b422b2003126b2116d26cf09f6e6244f1bb41f
+	%global commitdate	20230917
+	%global shortcommit	%(c=%{commit}; echo ${c:0:7})
+%endif
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
 Version:	1.3.2
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		File tools
 Url:		http://pcmanfm.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/pcmanfm/%{name}-%{version}.tar.xz
+#Source0:	http://downloads.sourceforge.net/pcmanfm/%{name}-%{version}.tar.xz
+Source0:	https://github.com/lxde/pcmanfm/archive/%{?snapshot:%{commit}}%{!?snapshot:%{version}}/%{name}-%{?snapshot:%{commit}}%{!?snapshot:%{version}}.tar.gz
 Patch0:		pcmanfm-0.9.8-mdv-default-config.patch
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
@@ -29,12 +38,25 @@ Conflicts:	lxde-common < 0.5.5
 PCMan File Manager is an extremely fast and lightweight file manager which
 features tabbed browsing and user-friendly interface.
 
+%files -f %{name}.lang
+%doc AUTHORS ChangeLog NEWS README
+%{_sysconfdir}/xdg/%{name}/default/pcmanfm.conf
+%{_bindir}/%{name}
+%{_datadir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}-desktop-pref.desktop
+%{_mandir}/man1/%{name}.1*
+
+#---------------------------------------------------------------------------
+
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1 -n %{name}-%{?snapshot:%{commit}}%{!?snapshot:%{version}}
 
 %build
-%configure --with-gtk=3
+autoreconf -fiv
+%configure \
+	-with-gtk=3 \
+	%{nil}
 %make_build
 
 %install
@@ -42,6 +64,7 @@ features tabbed browsing and user-friendly interface.
 
 rm -r %{buildroot}%{_includedir}
 
+# locales
 %find_lang %{name}
 
 # clean .desktop file
@@ -53,11 +76,3 @@ desktop-file-install \
 	--dir %{buildroot}%{_datadir}/applications \
 	%{buildroot}%{_datadir}/applications/%{name}.desktop
 
-%files -f %{name}.lang
-%doc AUTHORS ChangeLog NEWS README
-%{_sysconfdir}/xdg/%{name}/default/pcmanfm.conf
-%{_bindir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/applications/%{name}-desktop-pref.desktop
-%{_mandir}/man1/%{name}.1*

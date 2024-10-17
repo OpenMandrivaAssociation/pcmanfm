@@ -14,7 +14,7 @@ Version:	1.3.2
 Release:	3
 License:	GPLv2+
 Group:		File tools
-Url:		http://pcmanfm.sourceforge.net/
+Url:		https://pcmanfm.sourceforge.net/
 #Source0:	http://downloads.sourceforge.net/pcmanfm/%{name}-%{version}.tar.xz
 Source0:	https://github.com/lxde/pcmanfm/archive/%{?snapshot:%{commit}}%{!?snapshot:%{version}}/%{name}-%{?snapshot:%{commit}}%{!?snapshot:%{version}}.tar.gz
 Patch0:		pcmanfm-0.9.8-mdv-default-config.patch

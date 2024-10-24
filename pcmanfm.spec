@@ -3,15 +3,15 @@
 # git snapshot
 %global snapshot 1
 %if 0%{?snapshot}
-	%global commit		e6b422b2003126b2116d26cf09f6e6244f1bb41f
-	%global commitdate	20230917
+	%global commit		aa4860d6a7d55284eb92ae8c42df0af879d0b6df
+	%global commitdate	20240821
 	%global shortcommit	%(c=%{commit}; echo ${c:0:7})
 %endif
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
 Version:	1.3.2
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		File tools
 Url:		https://pcmanfm.sourceforge.net/

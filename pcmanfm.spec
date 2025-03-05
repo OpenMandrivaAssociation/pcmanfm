@@ -1,7 +1,7 @@
 #define _disable_ld_no_undefined 1
 
 # git snapshot
-%global snapshot 1
+#global snapshot 1
 %if 0%{?snapshot}
 	%global commit		aa4860d6a7d55284eb92ae8c42df0af879d0b6df
 	%global commitdate	20240821
@@ -10,8 +10,8 @@
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Version:	1.3.2
-Release:	4
+Version:	1.4.0
+Release:	1
 License:	GPLv2+
 Group:		File tools
 Url:		https://pcmanfm.sourceforge.net/

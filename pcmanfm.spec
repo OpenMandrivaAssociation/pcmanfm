@@ -11,7 +11,7 @@
 Summary:	PCMan File Manager
 Name:		pcmanfm
 Version:	1.4.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		File tools
 Url:		https://pcmanfm.sourceforge.net/
@@ -36,7 +36,7 @@ BuildRequires:	pkgconfig(pango) >= 1.20.0
 BuildRequires:	pkgconfig(x11)
 Requires:	shared-mime-info
 Requires:	gnome-icon-theme
-Suggests:	gvfs
+Requires:	gvfs
 Conflicts:	lxde-common < 0.5.5
 
 %description
